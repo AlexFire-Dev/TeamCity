@@ -1,0 +1,21 @@
+version: '3.8'
+
+services:
+  server:
+    image: jetbrains/teamcity-server
+    ports:
+      - "8111:8111"
+    volumes:
+      - data:/data/teamcity_server/datadir
+      - logs:/opt/teamcity/logs
+    networks:
+      - defaulf
+    restart: unless-stopped
+
+volumes:
+  data:
+  logs:
+
+networks:
+  defaulf:
+    driver: bridge
